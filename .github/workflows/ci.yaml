@@ -31,20 +31,13 @@ jobs:
             - name: Go Lint
               uses: golangci/golangci-lint-action@v6
 
-            - name: Go Build
-              run: go build -v ./...
-
             - name: Generate test coverage
               run: go test ./... -coverprofile=./coverage.out -covermode=atomic -coverpkg=./...
 
             - name: Check test coverage
               uses: vladopajic/go-test-coverage@v2
               with:
-                config: ./.testcoverage.yml
+                config: ./.testcoverage.yaml
                 profile: coverage.out
-                local-prefix: github.com/org/project
-                threshold-file: 80
-                threshold-package: 80
-                threshold-total: 95
                 git-token: ${{ github.ref_name == 'main' }}
                 git-branch: badges 

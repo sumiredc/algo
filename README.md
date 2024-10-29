@@ -4,6 +4,8 @@
 ## Test 
 
 ### Coverage
+- https://github.com/marketplace/actions/go-test-coverage
+
 ```sh
 # Export text
 go test -cover ./... -coverprofile=coverage.out

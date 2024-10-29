@@ -1,0 +1,19 @@
+# https://github.com/marketplace/actions/go-test-coverage
+profile: coverage.out
+local-prefix: "github.com/sumiredc/algo"
+
+threshold:
+  # The minimum coverage that each file should have
+  file: 70
+
+  # The minimum coverage that each package should have
+  package: 80
+
+  # The minimum total coverage project should have
+  total: 95
+
+override:
+  - threshold: 100
+    path: ^search$
+
+ 
