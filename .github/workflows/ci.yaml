@@ -34,12 +34,17 @@ jobs:
             - name: Go Build
               run: go build -v ./...
 
-            - name: Exclude auto-generated files from coverage
-              run: go test -cover ./... -coverprofile=coverage.out
+            - name: generate test coverage
+              run: go test ./... -coverprofile=./coverage.out -covermode=atomic -coverpkg=./...
 
-            - name: Code Coverage Summary Report
-              uses: irongut/CodeCoverageSummary@v1.3.0
+            - name: check test coverage
+              uses: vladopajic/go-test-coverage@v2
               with:
-                    filename: coverage.out
-                    badge: true
-                    format: text
+                config: ./.testcoverage.yml
+                profile: coverage.out
+                local-prefix: github.com/org/project
+                threshold-file: 80
+                threshold-package: 80
+                threshold-total: 95
+                git-token: ${{ github.ref_name == 'main' }}
+                git-branch: badges 
