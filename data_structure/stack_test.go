@@ -56,15 +56,14 @@ func TestPop(t *testing.T) {
 			expected := c.Values[i]
 			actual := stack.Pop()
 
-			if actual == nil {
+			if nil == actual {
 				t.Errorf(
 					"Failed to Pop to the Stack [values: %v, expected: %d, actual: nil]",
 					c.Values,
 					expected,
 				)
-			}
 
-			if expected != *actual {
+			} else if expected != *actual {
 				t.Errorf(
 					"Failed to Pop to the Stack [values: %v, expected: %d, actual: %d]",
 					c.Values,
