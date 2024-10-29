@@ -1,5 +1,5 @@
 # Algorithm in Golang
-
+![coverage](https://raw.githubusercontent.com/sumiredc/algo/badges/.badges/main/coverage.svg)
 
 ## Test 
 
