@@ -16,7 +16,6 @@ go tool cover -html=coverage.out -o coverage.html
 
 ## Lint
 - https://golangci-lint.run/
-- 
 
 ```sh
 golangci-lint run ./...
