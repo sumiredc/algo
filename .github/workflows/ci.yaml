@@ -1,0 +1,44 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - "*"
+    pull_request:
+        branches:
+            - "*"
+
+jobs:
+    ci:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+        
+            - name: Setup Go
+              uses: actions/setup-go@v3
+              with: 
+                go-version: '>=1.23.0'
+                cache: true
+
+            - name: OS Version
+              run: cat /etc/os-release
+
+            - name: Go Version
+              run: go version
+
+            - name: Go Lint
+              run: golangci/golangci-lint-action@v3
+
+            - name: Go Build
+              run: go build -v ./...
+
+            - name: Exclude auto-generated files from coverage
+              run: go tool cover -func coverage.out
+
+            - name: Code Coverage Summary Report
+              uses: irongut/CodeCoverageSummary@v1.3.0
+              with:
+                    filename: coverage.out
+                    badge: true
+                    format: text
