@@ -4,13 +4,13 @@ local-prefix: "github.com/sumiredc/algo"
 
 threshold:
   # The minimum coverage that each file should have
-  file: 70
+  file: 100
 
   # The minimum coverage that each package should have
-  package: 80
+  package: 100
 
   # The minimum total coverage project should have
-  total: 95
+  total: 100
 
 override:
   - threshold: 100
