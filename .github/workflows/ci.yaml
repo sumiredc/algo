@@ -20,6 +20,7 @@ jobs:
               with: 
                 go-version: '>=1.23.0'
                 cache: true
+                cache-dependency-path: go.sum
 
             - name: OS Version
               run: cat /etc/os-release
