@@ -40,5 +40,5 @@ jobs:
               with:
                 config: ./.testcoverage.yaml
                 profile: coverage.out
-                git-token: ${{ github.ref_name == 'main' }}
+                git-token: ${{ github.ref_name == 'main' && secrets.GITHUB_TOKEN || '' }}
                 git-branch: badges 
